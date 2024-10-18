@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static net.littlemad.socialapp.config.Constant.USER_ROLE;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -31,7 +33,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
-        this.defaultRole = roleRepository.findByName("USER");
+        this.defaultRole = roleRepository.findByName(USER_ROLE);
     }
 
     @Override
