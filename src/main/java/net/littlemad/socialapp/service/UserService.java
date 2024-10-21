@@ -9,6 +9,8 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
 
     User findByUsername(String username);
+
+    // FIXME Return CreateUserDTO
     User createUser(CreateUserDTO createUserDTO);
     List<User> getUsers();
 }
