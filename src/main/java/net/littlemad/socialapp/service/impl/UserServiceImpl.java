@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
         user.setUsername(createUserDTO.getUsername());
         user.setPassword(passwordEncoder.encode(createUserDTO.getPassword()));
-        user.setDisplayName(createUserDTO.getUserDisplayName());
+        user.setDisplayName(createUserDTO.getDisplayName());
         user.setEnabled(true);
 
         user.setRoles(Set.of(defaultRole));

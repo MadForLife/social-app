@@ -36,6 +36,7 @@ public class SecurityConfig {
                         .requestMatchers("/v1/roles/**").hasAuthority("ADMIN")
                         .requestMatchers("/v1/users/**").hasAuthority("ADMIN")
                         .requestMatchers("/v1/admins").hasRole("ADMIN")
+                        .requestMatchers("/v1/admins").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())

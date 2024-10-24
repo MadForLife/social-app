@@ -8,11 +8,13 @@ import java.util.List;
 
 public interface BoardService {
 
-    List<BoardDTO> getAllBoards();
+    BoardDTO createBoard(CreateBoardDTO createBoardDTO);
+
+    List<BoardDTO> getBoards();
 
     BoardDTO getBoardById(String id);
-    CreateBoardDTO createBoard(CreateBoardDTO createBoardDTO);
-    UpdateBoardDTO updateBoard(String id, UpdateBoardDTO updateBoardDTO);
-    void deleteBoard(String id);
 
+    BoardDTO updateBoardById(String id, UpdateBoardDTO updateBoardDTO);
+
+    void deleteBoardById(String id);
 }

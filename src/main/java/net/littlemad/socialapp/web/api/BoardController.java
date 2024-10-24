@@ -19,28 +19,29 @@ public class BoardController {
 
     @GetMapping
     public List<BoardDTO> getBoards() {
-        return boardService.getAllBoards();
-    }
-
-    @GetMapping("/{id}")
-    public BoardDTO getBoardById(@PathVariable String id) {
-        return boardService.getBoardById(id);
+        return boardService.getBoards();
     }
 
     @PostMapping
-    public CreateBoardDTO createBoardDTO(@RequestBody CreateBoardDTO createBoardDTO) {
+    public BoardDTO createBoard(@RequestBody CreateBoardDTO createBoardDTO) {
         return boardService.createBoard(createBoardDTO);
     }
 
-    @PutMapping("/{id}")
-    public UpdateBoardDTO updateBoard(@PathVariable String id,
-                                      @RequestBody UpdateBoardDTO updateBoardDTO) {
-        return boardService.updateBoard(id, updateBoardDTO);
+    @GetMapping("/{id}")
+    public BoardDTO getBoardByID(@PathVariable String id) {
+        return boardService.getBoardById(id);
     }
 
-    @DeleteMapping
-    public void deleteBoardById(@PathVariable String id) {
-        boardService.deleteBoard(id);
+    @PutMapping("/{id}")
+    public BoardDTO updateBoardById(@PathVariable String id,
+                                    @RequestBody UpdateBoardDTO updateBoardDTO) {
+        return boardService.updateBoardById(id, updateBoardDTO);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteBoardById(@PathVariable String id) {
+        boardService.deleteBoardById(id);
+    }
+
 
 }

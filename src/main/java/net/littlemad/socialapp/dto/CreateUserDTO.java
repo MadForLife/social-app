@@ -7,7 +7,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 public class CreateUserDTO {
 
     @NotNull(message = "Username is required")
@@ -20,6 +19,5 @@ public class CreateUserDTO {
 
     @NotNull(message = "Username is required")
     @Size(min = 1, message = "Display name has to be at least 1 char")
-    private String userDisplayName;
-
+    private String displayName;
 }
