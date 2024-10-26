@@ -14,14 +14,18 @@ import java.util.Set;
 @Table(name = "roles")
 public class Role extends BaseEntity {
 
+    public Role() {
+    }
+
+    public Role(String name) {
+        this.name = name;
+    }
+
     @Column(name = "role_name", nullable = false)
     private String name;
 
     @JsonBackReference
-    @ManyToMany
-    @JoinTable(name = "user_has_roles",
-            joinColumns = @JoinColumn(name = "roles_id"),
-            inverseJoinColumns = @JoinColumn(name = "users_id"))
+    @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
 }

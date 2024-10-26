@@ -2,7 +2,9 @@ package net.littlemad.socialapp.data.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Set;
@@ -42,7 +44,10 @@ public class User extends BaseEntity {
     private Set<Board> boards;
 
     @JsonManagedReference
-    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_has_roles",
+    joinColumns = @JoinColumn(name = "users_id"),
+    inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles;
 
 }
