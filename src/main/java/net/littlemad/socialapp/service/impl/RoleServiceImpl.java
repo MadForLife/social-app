@@ -3,6 +3,7 @@ package net.littlemad.socialapp.service.impl;
 import lombok.AllArgsConstructor;
 import net.littlemad.socialapp.data.entity.Role;
 import net.littlemad.socialapp.data.repository.RoleRepository;
+import net.littlemad.socialapp.exception.ResourceNotFoundException;
 import net.littlemad.socialapp.service.RoleService;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role findById(String id) {
         return this.roleRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Role not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Role with id [%s] not found".formatted(id)));
     }
 
     @Override

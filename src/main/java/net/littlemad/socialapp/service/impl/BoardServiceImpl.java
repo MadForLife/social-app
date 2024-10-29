@@ -8,6 +8,7 @@ import net.littlemad.socialapp.data.repository.UserRepository;
 import net.littlemad.socialapp.dto.BoardDTO;
 import net.littlemad.socialapp.dto.CreateBoardDTO;
 import net.littlemad.socialapp.dto.UpdateBoardDTO;
+import net.littlemad.socialapp.exception.ResourceNotFoundException;
 import net.littlemad.socialapp.mapper.BoardDTOMapper;
 import net.littlemad.socialapp.service.BoardService;
 import org.springframework.security.core.Authentication;
@@ -47,14 +48,14 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public BoardDTO getBoardById(String id) {
         return boardDTOMapper.toBoardDTO().apply(boardRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException(
+                .orElseThrow(() -> new ResourceNotFoundException(
                         "board with id [%s] not found".formatted(id))));
     }
 
     @Override
     public BoardDTO updateBoardById(String id, UpdateBoardDTO updateBoardDTO) {
         Board board = boardRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("board with id [%s] not found".formatted(id)));
+                .orElseThrow(() -> new ResourceNotFoundException("board with id [%s] not found".formatted(id)));
 
         board.setName(updateBoardDTO.getName());
         board.setPrivate(updateBoardDTO.isPrivate());

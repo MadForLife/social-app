@@ -6,6 +6,7 @@ import net.littlemad.socialapp.data.entity.User;
 import net.littlemad.socialapp.data.repository.PostRepository;
 import net.littlemad.socialapp.data.repository.UserRepository;
 import net.littlemad.socialapp.dto.PostDTO;
+import net.littlemad.socialapp.exception.ResourceNotFoundException;
 import net.littlemad.socialapp.mapper.PostDTOMapper;
 import net.littlemad.socialapp.service.PostService;
 import org.springframework.security.core.Authentication;
@@ -44,7 +45,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostDTO getPostById(String id) {
         return postDTOMapper.toPostDTO().apply(postRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("post with id [%s] not found".formatted(id))));
+                .orElseThrow(() -> new ResourceNotFoundException("post with id [%s] not found".formatted(id))));
     }
 
     @Override
