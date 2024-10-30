@@ -8,6 +8,7 @@ class SocialAppApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

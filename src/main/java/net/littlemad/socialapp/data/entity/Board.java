@@ -29,4 +29,11 @@ public class Board extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "posts_id"))
     private Set<Post> posts;
 
+    public Board() {
+    }
+
+    public Board(String name, boolean isPrivate) {
+        this.name = name;
+        this.isPrivate = isPrivate;
+    }
 }
